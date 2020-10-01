@@ -16,7 +16,11 @@ const forecast = (lat, lon, callback) => {
 			} else {
 				let { temp } = body.current;
 				let { description } = body.daily[0].weather[0];
-				callback(undefined, `There is ${description}. The temperature is ${temp} degrees.`);
+				let { min, max } = body.daily[0].temp;
+				callback(
+					undefined,
+					`There is ${description}. The temperature is ${temp} degrees. The min temperature is ${min} degrees and max temperature is ${max}`
+				);
 			}
 		}
 	);
